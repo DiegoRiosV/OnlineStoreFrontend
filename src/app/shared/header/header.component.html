@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="container row">
+    <div class="row brand">
+      <img src="assets/img/logo.svg" alt="Biba">
+      <span>Bolsas llenas de color</span>
+    </div>
+    <nav class="nav" aria-label="Principal">
+      <a routerLink="/">Tienda</a>
+      <a>Acerca de</a><a>FAQ</a><a>Contacto</a>
+      <button class="cart-btn" (click)="open()">
+        Carrito <span class="cart-count">{{ (count$ | async) ?? 0 }}</span>
+      </button>
+    </nav>
+  </div>
+</header>

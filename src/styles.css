@@ -1,1 +1,239 @@
-/* You can add global styles to this file, and also import other style files */
+
+:root{
+  --bg:#ffffff;
+  --text:#111111;
+  --muted:#6b7280;
+  --brand:#111111;
+  --accent:#0ea5e9;
+  --border:#e5e7eb;
+}
+
+*{
+  box-sizing:border-box
+}
+html,body{
+  margin:0;
+  padding:0
+}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.5;
+}
+
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 16px
+}
+
+.header{
+  position:sticky; 
+  top:0; 
+  z-index:50;
+  background:#fff; 
+  border-bottom:1px solid var(--border);
+  backdrop-filter:saturate(180%) blur(6px);
+}
+.header .row{
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  height:70px
+}
+.brand{
+  display:flex; 
+  align-items:center; 
+  gap:10px; 
+  font-weight:700; 
+  letter-spacing:.3px
+}
+.brand img{
+  height:32px
+}
+.nav{
+  display:flex; 
+  gap:22px; 
+  align-items:center; 
+  font-weight:500
+}
+.nav a{
+  color:var(--text); 
+  text-decoration:none
+}
+.nav a:hover{opacity:.7}
+.cart-btn{
+  display:inline-flex; 
+  align-items:center; 
+  gap:10px;
+  padding:10px 14px;
+  border:1px solid var(--border); 
+  border-radius:999px;
+  background:#fff; 
+  cursor:pointer;
+}
+.cart-count{
+  display:inline-grid; 
+  place-items:center; 
+  min-width:22px; 
+  height:22px; 
+  padding:0 6px;
+  background:#111;
+  color:#fff;
+  border-radius:999px; 
+  font-size:12px
+}
+
+.hero{
+  padding:56px 0 24px; 
+  border-bottom:1px solid var(--border);
+}
+h1{
+  font-size:64px; 
+  margin:0 0 6px
+}
+.subtitle{
+  color:var(--muted); 
+  font-size:18px
+}
+
+.grid{
+  display:grid; 
+  grid-template-columns:repeat(3,minmax(0,1fr)); 
+  gap:24px; 
+  padding:32px 0 64px
+}
+.card{
+  border:1px solid var(--border); 
+  border-radius:18px; 
+  overflow:hidden; 
+  background:#fff
+}
+.card img{
+  width:100%; 
+  display:block
+}
+.card .p{padding:16px}
+.price{font-weight:700}
+.btn{
+  display:inline-flex; 
+  justify-content:center; 
+  align-items:center; 
+  gap:8px;
+  padding:10px 14px; 
+  border-radius:10px; 
+  border:1px solid var(--border); 
+  background:#111; 
+  color:#fff; 
+  cursor:pointer
+}
+.btn.secondary{
+  background:#fff; 
+  color:#111
+}
+
+.drawer{
+  position:fixed; 
+  top:0; 
+  right:-420px; 
+  width:420px; 
+  max-width:100%;
+  height:100vh; 
+  background:#fff; 
+  border-left:1px solid var(--border);
+  box-shadow: -12px 0 30px rgba(0,0,0,.08);
+  transition:right .3s ease; 
+  z-index:60; 
+  display:flex; 
+  flex-direction:column;
+}
+.drawer.open{right:0}
+.drawer header{
+  padding:18px 20px; 
+  border-bottom:1px solid var(--border); 
+  display:flex; 
+  justify-content:space-between; 
+  align-items:center
+}
+.drawer main{
+  flex:1; 
+  overflow:auto; 
+  padding:18px 20px
+}
+.drawer footer{
+  border-top:1px solid var(--border); 
+  padding:18px 20px; 
+  display:grid; 
+  gap:12px
+}
+.empty{
+  color:var(--muted); 
+  text-align:center; 
+  padding:48px 0
+}
+
+.product{
+  display:grid; 
+  grid-template-columns: 1.3fr 1fr; 
+  gap:28px; 
+  padding:40px 0 80px
+}
+.gallery{
+  border:1px solid var(--border); 
+  border-radius:16px; 
+  overflow:hidden
+}
+.panel{
+  border:1px solid var(--border); 
+  border-radius:16px; 
+  padding:20px; 
+  display:grid; 
+  gap:14px
+}
+.qty{
+  display:flex; 
+  gap:10px; 
+  align-items:center
+}
+.qty button{
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer
+}
+.input{
+  display:grid; 
+  gap:6px
+}
+.input input{
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  width:100%
+}
+
+.table{
+  width:100%; 
+  border-collapse:collapse; 
+  font-size:14px
+}
+.table td{padding:6px 0;}
+
+.footer{
+  border-top:1px solid var(--border); 
+  padding:24px 0; 
+  color:var(--muted); 
+  font-size:14px
+}
+
+@media (max-width: 900px){
+  h1{font-size:44px}
+  .grid{grid-template-columns:1fr 1fr}
+  .product{grid-template-columns:1fr; }
+}
+@media (max-width: 640px){
+  .grid{grid-template-columns:1fr}
+}
