@@ -1,35 +1,48 @@
 <aside class="drawer" [class.open]="openDrawer" role="dialog" aria-label="Carrito">
-  <header>
-    <strong>Carrito</strong>
-    <button class="btn secondary" (click)="close()">Cerrar</button>
-  </header>
+  <!-- FRANJA NEGRA SUPERIOR -->
+  <div class="drawer-topbar">
+    <strong>Carrito ({{ (items$ | async)?.length || 0 }} ítem)</strong>
+    <button class="icon-btn light" (click)="close()" aria-label="Cerrar">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
 
-  <main>
+  <!-- BODY -->
+  <div class="drawer-body">
     <div class="empty" *ngIf="(items$ | async)?.length === 0">Tu carrito está vacío.</div>
 
-    <div *ngFor="let p of (items$ | async)" style="display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;margin-bottom:12px">
-      <img [src]="p.imageUrl" [alt]="p.title" style="width:64px;height:64px;object-fit:cover;border-radius:10px;border:1px solid var(--border)">
-      <div>
-        <div style="font-weight:600">{{ p.title }}</div>
-        <div class="input" style="margin-top:6px;grid-template-columns:repeat(3,32px);width:max-content;align-items:center;gap:6px;">
-          <button (click)="update(p.productId, p.qty-1)">-</button>
-          <div style="text-align:center">{{ p.qty }}</div>
-          <button (click)="update(p.productId, p.qty+1)">+</button>
+    <div *ngFor="let p of (items$ | async)" class="cart-card">
+      <div class="cart-card-left">
+        <img [src]="p.imageUrl" [alt]="p.title" class="thumb">
+        <div>
+          <div class="title">{{ p.title }}</div>
+          <div class="price">€ {{ p.price | number:'1.2-2' }}</div>
         </div>
       </div>
-      <div style="text-align:right">
-        <div>€ {{ (p.price*p.qty) | number:'1.2-2' }}</div>
-        <button class="btn secondary" style="margin-top:8px" (click)="remove(p.productId)">Quitar</button>
+      <div class="cart-card-actions">
+        <div class="qtybox">
+          <button (click)="update(p.productId, p.qty-1)" aria-label="Disminuir">
+            <i class="bi bi-dash"></i>
+          </button>
+          <span>{{ p.qty }}</span>
+          <button (click)="update(p.productId, p.qty+1)" aria-label="Aumentar">
+            <i class="bi bi-plus"></i>
+          </button>
+        </div>
+        <button class="icon-btn danger" (click)="remove(p.productId)" aria-label="Eliminar">
+          <i class="bi bi-trash"></i>
+        </button>
       </div>
     </div>
-  </main>
+  </div>
 
-  <footer>
-    <div style="display:flex;align-items:center;justify-content:space-between">
-      <strong>Total estimado</strong>
-      <strong>€ {{ (total$ | async) | number:'1.2-2' }}</strong>
+  <!-- FOOTER -->
+  <div class="drawer-footer">
+    <div class="total">
+      <span>Total estimado</span>
+      <span>€ {{ (total$ | async) | number:'1.2-2' }}</span>
     </div>
-    <button class="btn">Página de pago</button>
+    <button class="btn dark">Página de pago</button>
     <button class="btn secondary" (click)="close()">Ver carrito</button>
-  </footer>
+  </div>
 </aside>

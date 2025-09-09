@@ -1,12 +1,90 @@
-.drawer{
-  position:fixed; top:0; right:-420px; width:420px; max-width:100%;
-  height:100vh; background:#fff; border-left:1px solid var(--border);
-  box-shadow:-12px 0 30px rgba(0,0,0,.08);
-  transition:right .3s ease; z-index:60; display:flex; flex-direction:column;
+.drawer {
+  position: fixed;
+  top: 0; right: -420px;
+  width: 420px; max-width: 100%;
+  height: 100vh;
+  background: #fff;
+  border-left: 1px solid var(--border);
+  box-shadow: -12px 0 30px rgba(0,0,0,.08);
+  transition: right .3s ease;
+  z-index: 60;
+  display: flex; flex-direction: column;
 }
-.drawer.open{right:0}
-.drawer header{padding:18px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center}
-.drawer main{flex:1; overflow:auto; padding:18px 20px}
-.drawer footer{border-top:1px solid var(--border); padding:18px 20px; display:grid; gap:12px}
-.empty{color:var(--muted); text-align:center; padding:48px 0}
-.input input{padding:6px 10px;border:1px solid var(--border);border-radius:8px}
+.drawer.open { right: 0; }
+
+/* FRANJA NEGRA */
+.drawer-topbar {
+  background: #111; color: #fff;
+  padding: 16px 20px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.drawer-topbar strong { font-size: 16px; }
+.icon-btn.light {
+  background: transparent; border: none; color: #fff;
+  font-size: 18px; cursor: pointer;
+}
+
+/* BODY */
+.drawer-body { flex: 1; overflow: auto; padding: 16px 20px; }
+.empty { color: var(--muted); text-align: center; padding: 48px 0; }
+
+/* PRODUCT CARD */
+.cart-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex; flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.cart-card-left {
+  display: flex; gap: 12px; align-items: center;
+}
+.cart-card-left .thumb {
+  width: 64px; height: 64px;
+  border-radius: 8px; border: 1px solid var(--border);
+  object-fit: cover;
+}
+.cart-card-left .title { font-weight: 600; }
+.cart-card-left .price { font-size: 14px; color: #444; margin-top: 4px; }
+
+/* ACCIONES */
+.cart-card-actions {
+  display: flex; justify-content: space-between; align-items: center;
+}
+.qtybox {
+  display: flex; gap: 8px; align-items: center;
+}
+.qtybox button {
+  width: 32px; height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+}
+.icon-btn.danger {
+  color: #b91c1c; border: none;
+  background: transparent; cursor: pointer;
+  font-size: 18px;
+}
+
+/* FOOTER */
+.drawer-footer {
+  border-top: 1px solid var(--border);
+  padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.drawer-footer .total {
+  display: flex; justify-content: space-between;
+  font-weight: 600; margin-bottom: 8px;
+}
+.btn.dark {
+  background: #111; color: #fff;
+  border-radius: 8px;
+  padding: 12px; font-weight: 600;
+}
+.btn.secondary {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px; font-weight: 500;
+}
