@@ -18,4 +18,7 @@
   background:#111;color:#fff;border-radius:999px; font-size:12px}
 .hero{padding:56px 0 24px; border-bottom:1px solid var(--border)}
 h1{font-size:64px; margin:0 0 6px}
+.cart-btn i { font-size: 18px; }
+.cart-btn { gap: 10px; }
+
 @media (max-width:900px){ h1{font-size:44px} }
