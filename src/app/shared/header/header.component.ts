@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AsyncPipe} from '@angular/common';
-import { CartService } from '../../core/services/cart.service';
-import { Observable } from 'rxjs';
+import { RouterModule, Router } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { CartService } from '../../core/services/cart.service';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -14,19 +15,21 @@ import { FormsModule } from '@angular/forms';
 export class HeaderComponent implements OnInit {
   count$!: Observable<number>;
 
-  constructor(private cart: CartService) {}
+  constructor(
+    private cart: CartService,
+    private router: Router   
+  ) {}
 
   ngOnInit(): void {
     this.count$ = this.cart.count$;
   }
 
-  open(){
+  open() {
     document.querySelector('app-cart-drawer')
       ?.dispatchEvent(new CustomEvent('open'));
   }
-  onLogin() {
- 
-  console.log('Login clicado');
-}
 
+  onLogin() {
+    this.router.navigate(['/login']); 
+  }
 }
