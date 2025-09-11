@@ -24,4 +24,9 @@ export class HeaderComponent implements OnInit {
     document.querySelector('app-cart-drawer')
       ?.dispatchEvent(new CustomEvent('open'));
   }
+  onLogin() {
+ 
+  console.log('Login clicado');
+}
+
 }
