@@ -4,6 +4,7 @@
       <img src="assets/img/logo.svg" alt="Biba">
       <span>Bolsas llenas de color</span>
     </div>
+
     <nav class="nav" aria-label="Principal">
       <a [routerLink]="['/']">Tienda</a>
       <a [routerLink]="['/about']">Acerca de</a>
@@ -11,9 +12,16 @@
       <a [routerLink]="['/contact']">Contacto</a>
     </nav>
 
-    <button class="cart-btn" (click)="open()" aria-label="Abrir carrito">
-      <i class="bi bi-bag"></i>
-      <span class="cart-count">{{ (count$ | async) ?? 0 }}</span>
-    </button>
+  
+    <div class="actions">
+      <button class="login-btn" (click)="onLogin()" aria-label="Iniciar sesión">
+        <i class="bi bi-person"></i>
+        <span>Iniciar sesión</span>
+      </button>
+      <button class="cart-btn" (click)="open()" aria-label="Abrir carrito">
+        <i class="bi bi-bag"></i>
+        <span class="cart-count">{{ (count$ | async) ?? 0 }}</span>
+      </button>
+    </div>
   </div>
 </div>
